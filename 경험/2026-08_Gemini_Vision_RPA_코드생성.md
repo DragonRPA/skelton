@@ -15,13 +15,14 @@
 
 ## 🛠️ 핵심 구현 및 아키텍처
 
-1. **Google Gemini Multimodal Vision API 연동 (`ai_vision_agent.py`)**:
-   - `gemini-2.5-flash` (초당 수십만 토큰 처리, 1회 분석당 0.03원 수준의 초저비용) 및 `gemini-2.5-pro` 선택 지원.
-   - Base64 스크린샷 이미지 + 시스템 프롬프트 + 자연어 요구사항을 v1beta REST API로 원격 전송.
+1. **하이브리드 비전 듀얼 엔진 연동 (`ai_vision_agent.py`)**:
+   - **Google Gemini (클라우드)**: `gemini-2.5-flash` / `gemini-2.5-pro` (0.8~1.5초 초고속, 초저비용 분석)
+   - **Local Ollama (로컬 100% 무료/오프라인)**: `qwen3-vl:4b`, `gemma3:12b`, `llava` 등 사내망 완벽 보안 추론
 2. **원클릭 GUI 캡처 모달 (`AIVisionModal`)**:
+   - 상단 세그먼트 버튼으로 `[☁️ Google Gemini]` ↔ `[🦙 Local Ollama]` 원클릭 스위칭.
    - `[📸 현재 화면 즉시 캡처]` (PyAutoGUI / PIL 자동 캡처)
    - `[📁 이미지 파일 열기]` (로컬 스크린샷 로드 및 실시간 썸네일 미리보기)
-   - `[⚡ AI 코드 생성]` 클릭 시 1.5초 만에 완성형 Playwright/UIA 코드 출력.
+   - `[⚡ AI 코드 생성]` 클릭 시 완성형 Playwright/UIA 코드 출력.
 3. **스튜디오 파이프라인 연동**:
    - 생성된 코드를 **`[📋 에디터 커서에 코드 삽입]`** 또는 **`[🤖 봇 에디터에 모듈로 즉시 추가]`**하여 논스톱 자동화 파이프라인 완성.
 
