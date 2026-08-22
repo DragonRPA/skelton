@@ -22,6 +22,7 @@
 | 46~48 | UI 3분할 및 폰트 11pt 개편 | 공간 활용도 극대화 및 가독성 최적화 |
 | 50 | 프로젝트별 대상 URL 저장/로드 | `rpa_targets` DB 연동 및 ComboBox 바인딩 |
 | 53 | 수직 구분선 CTkFrame 200px 버그 해결 | `CTkFrame` 기본 `height=200` 주의, `height=1` 명시 필수 |
+| 54 | DB 관리 탭 (탐색기 + DDL 패치 실행기) | Treeview 다크 그리드 + thread-safe Queue 비동기 DB 인트로스펙션 |
 
 ---
 
