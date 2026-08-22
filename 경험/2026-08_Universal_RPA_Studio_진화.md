@@ -36,6 +36,7 @@
 | 65 | 변수명 수정 DB 영구 저장 & 비밀번호 Fernet 암호화 체계 | `[✏]` 수정값 DB 100% 영구 동기화 및 `login_pw` Fernet 양방향 암호화 보호 |
 | 66 | 변수명 수정 시 PK ID 기반 순수 UPDATE 보장 | 기존 행 덮어쓰기(UPDATE) 엄격화, INSERT 중복 생성 원천 차단 |
 | 67 | Ollama 비이미지 코드생성 NoneType 버그 수정 & 기본 프롬프트 표준화 | `image_path=None` 안전 처리(순수 텍스트 Keep 추론) 및 표준 프롬프트 문구 적용 |
+| 68 | Ollama 엔진 목록 비전 모델(vl) 제외 & 코더 모델 우선 정렬 | `vl`, `vision`, `llava` 등 무거운 멀티모달 제외, `qwen2.5-coder` 등 코드 특화 모델 우선화 |
 
 ---
 
