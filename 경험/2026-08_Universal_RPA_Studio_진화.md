@@ -23,6 +23,7 @@
 | 50 | 프로젝트별 대상 URL 저장/로드 | `rpa_targets` DB 연동 및 ComboBox 바인딩 |
 | 53 | 수직 구분선 CTkFrame 200px 버그 해결 | `CTkFrame` 기본 `height=200` 주의, `height=1` 명시 필수 |
 | 54 | DB 관리 탭 (탐색기 + DDL 패치 실행기) | Treeview 다크 그리드 + thread-safe Queue 비동기 DB 인트로스펙션 |
+| 55 | Keep 요소 DB 자동 로드 & 중복 방지 | 레거시 테이블 전면 정리, 프로젝트 로드 시 Keep 자동 복원 및 DB 양방향 동기화 |
 
 ---
 
