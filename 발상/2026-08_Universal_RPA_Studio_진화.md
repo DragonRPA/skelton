@@ -58,13 +58,24 @@ AI가 pandas + Playwright 루프 스크립트를 자동 생성한다.
 
 > "앞으로 프로젝트를 생성하고, 프로젝트 단위에서 여러 URL, Keep 요소, 스크립트를 관리하고 DB에 저장하기를 원해"
 
-5개 테이블 관계형 스키마:
-`rpa_projects → rpa_targets → rpa_keep_elements → rpa_tasks ↔ rpa_task_elements`
-
-앱 시작 시 프로젝트 선택 모달, 생성된 스크립트마다 지문(Fingerprint) 자동 삽입,
-DEBUG/RELEASE 빌드 타입 구분으로 운영 배포 이력 관리.
+- 5개 테이블 관계형 DB 스키마: `rpa_projects`, `rpa_targets`, `rpa_keep_elements`, `rpa_tasks`, `rpa_run_logs`
+- 스크립트 지문(Fingerprint) 자동 삽입으로 생성 추적성 확보
+- 로컬 DB(Neon PostgreSQL) 동기화
 
 ### 핵심 인사이트
 - RPA 스크립트도 소프트웨어다. 버전/환경/작성자 추적이 필수
 - 지문 헤더는 스크립트 파일 하나만 봐도 모든 맥락을 알 수 있게 한다
 - 프로젝트 개념이 없으면 Keep/스크립트가 세션 종료 시 사라진다
+
+---
+
+## 발상 5: 폴더 경로 및 확장자 기반 파일명 배열 변수 (File Array Variable)
+
+> "특정 파일경로(폴더) 내의 특정 확장자를 가진 전체 파일을 대상으로 수행하는 작업이 있어. 경로지정과 확장자지정을 해서, 파일리스트를 배열로 처리하는 기능도 설계하고 싶어"
+
+- 폴더 경로 선택 + 확장자 입력(예: `pdf`, `xlsx`) ➔ 해당 폴더 내 일치하는 파일명 목록을 배열로 자동 취합
+- Keep 목록에 `[FILES] {file_list}` 배열 변수로 등록
+- 프롬프트에 `{file_list}` 삽입 시 AI가 `for file_name in file_list:` 순회 루프 스크립트를 즉시 생성
+
+### 핵심 인사이트
+- 단일 파일 행(Row) 루프(`{row.컬럼}`)뿐만 아니라, **디렉터리 파일(File) 배열 루프(`{file_list}`)**까지 완비하여 파일 첨부/배치 조작 완전 자동화 실현.
