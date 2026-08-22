@@ -19,6 +19,9 @@
 | 38 | 프로젝트 중심 진화 | DB 지문 9컬럼이 스크립트 추적성을 완전히 보장 |
 | 39 | Keep 칩 타입별 액션 팝업 | element_type → Playwright method 자동 매핑 |
 | 40 | 데이터 소스 패널 | 배치 RPA 패러다임 정립, pandas + iterrows 루프 |
+| 46~48 | UI 3분할 및 폰트 11pt 개편 | 공간 활용도 극대화 및 가독성 최적화 |
+| 50 | 프로젝트별 대상 URL 저장/로드 | `rpa_targets` DB 연동 및 ComboBox 바인딩 |
+| 53 | 수직 구분선 CTkFrame 200px 버그 해결 | `CTkFrame` 기본 `height=200` 주의, `height=1` 명시 필수 |
 
 ---
 
