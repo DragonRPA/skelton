@@ -1,9 +1,11 @@
-﻿# 🔬 [경험] dragonrpa.co.kr 기업 공식 홈페이지 구축 및 빌드 완결
+# 🔬 [경험] dragonrpa.co.kr 기업 공식 홈페이지 구축 및 빌드/푸시 완결
 
-- **작성일시**: 2026-08-27 15:50
+- **작성일시**: 2026-08-27 15:56
 - **연결 계획**: [2026-08_dragonrpa_공식_홈페이지_구축.md](../계획/2026-08_dragonrpa_공식_홈페이지_구축.md)
 - **연결 발상**: [2026-08_dragonrpa_종합_시스템_구축.md](../발상/2026-08_dragonrpa_종합_시스템_구축.md)
-- **결과**: ✅ 성공 (Next.js 15 App Router 프로덕션 빌드 완료)
+- **원격 저장소**: [https://github.com/DragonRPA/Homepage](https://github.com/DragonRPA/Homepage)
+- **버전**: 0.1.0.Build.1
+- **결과**: ✅ 성공 (Next.js 15 프로덕션 빌드 통과 및 GitHub 푸시 완료)
 
 ---
 
@@ -21,6 +23,9 @@
    - Contact.tsx: 전사 표준 세로 스택형 상담 신청 폼
    - Footer.tsx: 기업 정보, 사업자 번호, 공식 이메일 (contact@dragonrpa.co.kr)
    - src/app/api/contact/route.ts: 문의 접수 백엔드 API 핸들러
+3. **버전 관리 및 배포 준비**:
+   - 전사 표준 4단계 버전 넘버링 (0.1.0.Build.1) 및 RELEASE_NOTES.md 작성
+   - https://github.com/DragonRPA/Homepage의 main 브랜치에 푸시 완료
 
 ---
 
