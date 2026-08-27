@@ -32,3 +32,8 @@
 ## 2. 발생 이슈 및 해결 (Lessons Learned)
 - **BOM(Byte Order Mark) 이슈**: PowerShell UTF-8 기본 저장 시 포함되는 BOM으로 인해 Next.js Webpack에서 JSON.parse 에러 발생 -> New-Object System.Text.UTF8Encoding False로 무BOM UTF-8 저장 처리하여 완벽 해결.
 - **Autoprefixer 누락**: PostCSS 빌드 시 autoprefixer 모듈 누락 에러 즉시 감지 -> 패키지 추가 설치 후 10.3s 만에 무결점 빌드 달성.
+---
+
+### [2026-08-27 17:56] 랜딩페이지 미니멀 전환 (서비스 준비 중 모드)
+- 인바운드 영업 준비 전까지 불필요한 폼 및 상세 소개를 내리고, 단정한 미니멀 브랜드 안내 페이지로 전환.
+- 도메인 보안 인증 완료 마크 및 대표 문의 이메일(contact@dragonrpa.co.kr) 단독 표출.
