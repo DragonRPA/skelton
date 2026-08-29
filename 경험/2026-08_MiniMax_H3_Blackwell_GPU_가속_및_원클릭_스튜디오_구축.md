@@ -37,3 +37,12 @@
   1. 외부 `ModelSamplingSD3` 노드를 제거하고 MiniMax H3 모델 자체 내장 Discrete Flow 스케줄러(`audio_scale`)를 사용하도록 `UNETLoader` -> `KSampler` 직접 연결.
   2. `poll_execution` 조건식을 `status.completed == True` 및 `status_str != 'error'` 검증으로 강화.
   3. RTX 5080 환경에서 5-Step 실제 비디오 추론 완주 및 MP4 생성(1.04MB) 100% 검증.
+
+---
+
+## 5. [v1.0.3.Build.4] 77% 진행률 상한 및 WebSocket 실시간 스텝 연동
+- **진단 및 이슈**: 이전 테스트 프로세스 종료 시 백엔드 단절이 발생했을 때, 폴링 루틴이 예외를 무시하고 30분 타임아웃까지 무한 대기하며 77% 상한선에 멈춰 있는 현상 규명.
+- **해결**:
+  1. `websocket-client`를 통해 ComfyUI WebSocket(`ws://127.0.0.1:8188/ws`) 실시간 스텝(`12/25 단계`) 및 VAE 디코딩 노드 상태 1:1 연동.
+  2. 백엔드 연결 단절 시 4회 연속 실패 감지 즉시 `ConnectionError`를 표출하는 Fail-Fast 기제 도입.
+  3. `imageio-ffmpeg`를 자동 연동하여 FFmpeg 후처리 엔진 가용성 100% 확보.
