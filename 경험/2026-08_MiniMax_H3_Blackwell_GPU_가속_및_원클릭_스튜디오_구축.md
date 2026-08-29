@@ -28,3 +28,12 @@
 ## 3. 체득한 원칙 및 교훈
 - **차세대 하드웨어 생태계 호환성**: 최신 아키텍처 GPU(Blackwell 등)에서는 드라이버 및 PyTorch의 CUDA 호환성(`sm_xxx`)을 사전에 철저히 검증하고, 연관 패키지(`torch`, `torchvision`, `torchaudio`)의 CUDA 릴리즈 인덱스를 100% 일치시켜야 함.
 - **사용자 편익 극대화 (카테고리 1.1)**: 복잡한 백엔드 서버 기동 및 포트 관리를 사용자에게 전가하지 않고, 단일 진입점(원클릭)에서 백그라운드 데몬으로 완전 자동화할 때 시스템 효익이 극대화됨.
+
+---
+
+## 4. [v1.0.2.Build.3] MiniMax H3 KSampler 플로우 샘플링 및 폴링 정상화
+- **진단 및 이슈**: 렌더링 32% 시점에서 KSampler가 `'ModelSamplingAdvanced' object has no attribute 'audio_scale'` 예외를 발생시키고, 폴링 루틴이 `/history`의 빈 `outputs: {}`를 완료로 오인하여 `산출물 파일 없음`으로 조기 실패 처리함.
+- **해결**:
+  1. 외부 `ModelSamplingSD3` 노드를 제거하고 MiniMax H3 모델 자체 내장 Discrete Flow 스케줄러(`audio_scale`)를 사용하도록 `UNETLoader` -> `KSampler` 직접 연결.
+  2. `poll_execution` 조건식을 `status.completed == True` 및 `status_str != 'error'` 검증으로 강화.
+  3. RTX 5080 환경에서 5-Step 실제 비디오 추론 완주 및 MP4 생성(1.04MB) 100% 검증.
